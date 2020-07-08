@@ -127,7 +127,6 @@ int height(struct Node* root){
     
 }
 
-
 void preorder(struct Node* root){
     if(root!=nullptr){
         cout << root->val << " ";
@@ -180,8 +179,6 @@ int main() {
     cout << "Height : " << height(root) << endl;
     cout << "#Internal Nodes : " <<  numberOfInternalNodes(root) << endl; 
     cout << "#External Nodes : " << numberOfExternalNodes(root) << endl; 
-	
-	 
-	
+		
 	return 0;
 }
