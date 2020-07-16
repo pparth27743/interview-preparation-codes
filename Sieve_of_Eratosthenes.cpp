@@ -8,7 +8,7 @@ void sieve_of_prime(int arr[], int N){
         arr[i] = 1;
         
     // Sieve of Eratosthenes
-    for(int i=3; i<N; i+=2){
+    for(int i=3; i*i<N; i+=2){
         if(arr[i] == 1){
             for(int j=i*i; j<N; j+=i)
                 arr[j] = 0;
