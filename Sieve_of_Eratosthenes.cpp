@@ -1,46 +1,81 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> sieve(int N){
+// Original Sieve
+vector<int> sieve1(int num){
     
-    bool isPrime[N+1] = {false};
+    int N = num + 1;
     vector<int> v;
+    bool isPrime[N];
     
-   // Mark all the odd numbers as prime 
-    for(int i=3; i<N+1; i+=2)
+    for(int i=0; i<N; i++)
         isPrime[i] = true;
-        
-    // Sieve of Eratosthenes
-    for(int i=3; i*i<N+1; i+=2){
-        if(isPrime[i] == 1){
+    
+    
+    // Original Sieve
+    for(int i=2; i*i<N; i++){
+        if(isPrime[i] == true){
             for(int j=i*i; j<N; j+=i)
                 isPrime[j] = false;
         }
     }
-        
+    
     // Special cases
     isPrime[0] = false;
     isPrime[1] = false;
     isPrime[2] = true;
+
     
-    
-    // make isPrimeay of prime numbers
+    // make array of prime numbers
     for(int i=0; i<N; i++)
         if(isPrime[i] == true)
             v.push_back(i);
             
     return v;
+}
+
+ // Optimized Sieve of Eratosthenes
+vector<int> sieve2(int num){
     
+    int N = num + 1;
+    vector<int> v;
+    bool isPrime[N]={false};
+    
+   // Mark all the odd numbers as prime 
+    for(int i=3; i<N; i+=2)
+        isPrime[i] = true;
+        
+    // Optimized Sieve of Eratosthenes
+    for(int i=3; i*i<N; i+=2){
+        if(isPrime[i] == true){
+            for(int j=i*i; j<N; j+=i)
+                isPrime[j] = false;
+        }
+    }
+    
+
+    // Special cases
+    isPrime[0] = false;
+    isPrime[1] = false;
+    isPrime[2] = true;
+
+    
+    // make array of prime numbers
+    for(int i=0; i<N; i++)
+        if(isPrime[i] == true)
+            v.push_back(i);
+            
+    return v;
 }
 
 
 int main(){
     
-    int N = 30;
+    int num = 100;
     
-    vector<int> v = sieve(N);
+    vector<int> v = sieve1(num);
     
-    cout << "List of prime numbres upto " << N << ": ";
+    cout << "List of prime numbres upto " << num << ": ";
     
     for(auto i=v.begin(); i!=v.end(); i++)
         cout << *i << " ";   
