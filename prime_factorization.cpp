@@ -1,3 +1,5 @@
+// Prime factorization using sieve
+
 #include<bits/stdc++.h>
 using namespace std;
 
