@@ -22,13 +22,13 @@ int main() {
     }
     
 //************   Naive Method Output   *********//
-    cout << "Naive Method: \n"
+    cout << "Naive Method: \n";
     for(int i: a)
         cout << i << " ";
     cout << "\n";
 
 //************  Optimized Method Output *********//
-    cout << "Optimized Method: \n"
+    cout << "Optimized Method: \n";
     for(int i=1; i<6; i++)
         a1[i] += a1[i-1];
     for(int i=0; i<6; i++)
