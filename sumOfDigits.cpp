@@ -16,4 +16,5 @@ int main() {
     std::cout << sumOfDigits(123456) << std::endl;
     
 	return 0;
+	
 }
