@@ -25,7 +25,6 @@ void rotateArr(int arr[], int d, int n){
    }
 }
 
-
 int main(){
 
     int n = 8, d = 19;
