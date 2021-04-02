@@ -1,2 +1,5 @@
 # macOS Files 
 .DS_Store
+
+# executable file
+a.out
