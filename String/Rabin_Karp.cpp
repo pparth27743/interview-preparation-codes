@@ -33,7 +33,7 @@ vector<int> Rabin_Karp(string A, string pattern){
     int l = pattern.size();
 
     for(int i=0; i<=n-l; i++){
-        int curr_h;
+        long long curr_h;
         curr_h = (prefix_hash[i+l] + m - prefix_hash[i]) % m;
         curr_h = (curr_h * p_pow[n-1-i]) % m;
         if(curr_h == p_hash){

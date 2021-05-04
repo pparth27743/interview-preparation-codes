@@ -91,8 +91,8 @@ vector<int> KMP(string text, string pattern){
 
 int main(){
 
-    string text = "Parth Patel Parth arth art h arthhh";
-    string pattern = "arth";
+    string text = "b";
+    string pattern = "b";
 
     
     vector<int> ans = KMP(text, pattern);
