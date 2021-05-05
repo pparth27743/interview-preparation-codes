@@ -43,10 +43,38 @@ int subsetSum_1D_2_rows(int arr[], int n, int sum){
 }
 
 
+void display(vector<int> v){
+    for(int i : v)
+        cout << i << " ";
+    cout << endl;
+}
+
+// Print subsets 
+void printsubsets(int arr[], int i, int sum, vector<vector<int> > dp, vector<int> &v){
+
+    if(sum == 0){
+        display(v);
+        return;
+    }
+    
+    // Exclude current element
+    if(dp[i-1][sum] != 0){
+        vector<int> p = v;
+        printsubsets(arr, i-1, sum, dp, p);
+    }
+
+    // Include current element
+    if(sum >= arr[i-1] && dp[i-1][sum - arr[i-1]] !=0){
+        v.push_back(arr[i-1]);
+        printsubsets(arr, i-1, sum-arr[i-1], dp, v);
+    }
+}
+
+
 // 2D approach
 int subsetSum_2D(int arr[], int n, int sum){
 
-    int dp[n+1][sum+1];
+    vector<vector<int> > dp(n+1, vector<int>(sum+1, 0));
 
     for(int i=0; i<=n; i++)
         dp[i][0] = 1;
@@ -63,22 +91,27 @@ int subsetSum_2D(int arr[], int n, int sum){
         }
     }
 
+    if(dp[n][sum]){
+        vector<int> v;
+        printsubsets(arr, n, sum, dp, v);
+    }
+
     return dp[n][sum];
 }
 
                    
 int main(){
    
-    int arr[] = {1,3,5,7,12,10,22,43,65};
+    int arr[] = {1,3,5,5,10,5,7,12,10,22,43,65,3,3,35,6,7,9,12,22,23,20,16};
 
     int n = sizeof(arr)/sizeof(arr[0]);
-
+    
     int sum;
     cin >> sum;
 
     cout << subsetSum_2D(arr, n, sum) << endl; 
-    cout << subsetSum_1D_2_rows(arr, n, sum) << endl; 
-    cout << subsetSum_1D(arr, n, sum) << endl; 
+    // cout << subsetSum_1D_2_rows(arr, n, sum) << endl; 
+    // cout << subsetSum_1D(arr, n, sum) << endl; 
 
 
     return 0;
