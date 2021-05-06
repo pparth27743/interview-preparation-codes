@@ -8,12 +8,12 @@ int recursive(int coins[], int n, int sum){
     if(sum == 0) 
         return 0;
     
-    else if(n < 0)
+    else if(n == 0)
         return INT_MAX-1;
     
     else{
-        if(coins[n] <= sum)
-            return min(recursive(coins, n-1, sum), 1 + recursive(coins, n, sum-coins[n]));
+        if(coins[n-1] <= sum)
+            return min(recursive(coins, n-1, sum), 1 + recursive(coins, n, sum-coins[n-1]));
         else
         return recursive(coins, n-1, sum);
     }
@@ -51,12 +51,8 @@ int min_coinChage_2D(int coins[], int n, int sum){
                 dp[i][j] = min(dp[i-1][j], 1+dp[i][j-coins[i-1]]);
             else
                 dp[i][j] = dp[i-1][j];
-            
-            // cout << dp[i][j] << " ";
         }
-        // cout << endl;
     }
-
     return dp[n][sum];
 }
 
@@ -68,11 +64,11 @@ int main(){
 
     int n = sizeof(val)/sizeof(val[0]);
     
-    int sum = 1420;
+    int sum = 100;
 
     cout << min_coinChage_2D(val, n, sum) << endl; 
     cout << min_coinChage_1D(val, n, sum) << endl; 
-    cout << recursive(val, n-1, sum) << endl; 
+    cout << recursive(val, n, sum) << endl; 
 
 
     return 0;
