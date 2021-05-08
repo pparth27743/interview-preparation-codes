@@ -52,6 +52,21 @@ void printSubSeq(int i, int j, string s1, string s2, vector<vector<int> >&dp, ve
 
 }
 
+// Space Optimized 
+int lcs_space_op(int x, int y, string s1, string s2){
+
+    vector<vector<int> > dp(2, vector<int>(y+1, 0));
+
+    for (int i=1; i<=x; i++){
+        for (int j=1; j<=y; j++){
+            if (s1[i-1] == s2[j-1])
+                dp[i%2][j] = 1 + dp[(i-1)%2][j-1];
+            else
+                dp[i%2][j] = max(dp[(i-1)%2][j], dp[i%2][j-1]);
+        }
+    }
+    return dp[x%2][y];
+}
 
 // Bottom-Up approach 
 int lcsTab(int x, int y, string s1, string s2)
@@ -76,13 +91,14 @@ int lcsTab(int x, int y, string s1, string s2)
 int main()
 {
 
-    string s1 = "abcabcaa";
-    string s2 = "acbacba";
+    string s1 = "abcadfadffasdfasdfasdfasasdfasdfsdfbcaa";
+    string s2 = "acbsdfadfsdfasdfasdfasdfasdfassdfacba";
 
     int x = s1.size();
     int y = s2.size();
    
-    cout << lcsTab(x, y, s1, s2) << endl;
+    // cout << lcsTab(x, y, s1, s2) << endl;
+    cout << lcs_space_op(x, y, s1, s2) << endl;
     // cout << lcsRec(x, y, s1, s2) << endl;
 
     return 0;
