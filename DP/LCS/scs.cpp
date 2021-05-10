@@ -3,6 +3,47 @@ using namespace std;
 
 // Shortest Common SuperSequence
 
+
+
+
+string print_scs(int x, int y, string s1, string s2, vector<vector<int> > dp){
+
+    string ans = "";
+
+    int i = dp.size();
+    int j = dp[0].size();
+
+    while(i>0 && j>0){
+        if(s1[i-1] == s2[j-1]){
+            ans = s1[i-1] + ans;
+            i--;
+            j--;
+        }
+        else if(dp[i-1][j] > dp[i][j-1]){
+            ans = s1[i-1] + ans;
+            i--;
+        }
+        else{
+            ans = s2[j-1] + ans;
+            j--;
+        }
+    }
+
+    while(i>0){
+        ans = s1[i-1] + ans;
+        i--;
+    }
+
+    while(j>0){
+        ans = s2[j-1] + ans;
+        j--;
+    }
+    
+    return ans;
+}
+
+
+
 // Bottom-Up approach 
 int scs(int x, int y, string s1, string s2)
 {
@@ -16,6 +57,9 @@ int scs(int x, int y, string s1, string s2)
                 dp[i][j] = max(dp[i-1][j], dp[i][j-1]);
         }
     }
+
+    cout << print_scs(x, y, s1, s2, dp) << endl;
+
     return (x+y-dp[x][y]);
 }
 
