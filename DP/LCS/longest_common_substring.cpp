@@ -41,8 +41,8 @@ int longest_common_substring(int x, int y, string s1, string s2)
 int main()
 {
 
-    string s1 = "ABCDGH";
-    string s2 = "ABCDGH";
+    string s1 = "ABCDSHJKGHKJS";
+    string s2 = "ABSDFGHJKHJCDGH";
 
     int x = s1.size();
     int y = s2.size();
