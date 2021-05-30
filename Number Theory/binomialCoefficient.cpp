@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 long binomicalCoeff(long n, long k){
 
     if(k>n)
@@ -10,12 +8,12 @@ long binomicalCoeff(long n, long k){
 
     if(k==0 || k==n)
         return 1;
-    
+
     // C(n,k) = C(n-1,k) + C(n-1,k-1)
     return binomicalCoeff(n-1, k) + binomicalCoeff(n-1, k-1);
 }
 
-// DP solution.
+// DP solution. O(n*k)
 long DPbinomicalCoeff(long n, long k, vector<vector<int> > &dp){
 
     if(k>n)
