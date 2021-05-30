@@ -57,7 +57,6 @@ int knapSack(int W, int wt[], int val[], int n)
 // }
 
 
-// { Driver Code Starts.
 
 int main()
  {
@@ -86,4 +85,4 @@ int main()
         
     }
 	return 0;
-}  // } Driver Code Ends
+} 

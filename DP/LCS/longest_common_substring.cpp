@@ -31,7 +31,7 @@ int longest_common_substring(int x, int y, string s1, string s2)
             else
                 dp[i][j] = 0;
 
-            ans = max(ans, dp[i][j]);
+    
         }
     }
 
@@ -41,8 +41,8 @@ int longest_common_substring(int x, int y, string s1, string s2)
 int main()
 {
 
-    string s1 = "ABCDSHJKGHKJS";
-    string s2 = "ABSDFGHJKHJCDGH";
+    string s1 = "abcd";
+    string s2 = "abcabcd";
 
     int x = s1.size();
     int y = s2.size();

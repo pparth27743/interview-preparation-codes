@@ -22,24 +22,20 @@ int subsetSum_1D(int arr[], int n, int sum){
 // 1D (2 rows) approach
 int subsetSum_1D_2_rows(int arr[], int n, int sum){
 
-    int dp[2][sum+1];
-    memset(dp, 0, sizeof(dp));
-    dp[0][0] = 1;
-    dp[1][0] = 1;
-
-    int r=0;
+    vector<vector<int> > dp(2, vector<int>(sum+1, 0));
+    dp[0][0] = dp[1][0] = 1;
 
     for(int i=1; i<=n; i++){
-        for(int j=1; j<=sum; j++){
-            if(arr[i-1] <= j)
-                dp[1-r][j] = dp[r][j] + dp[r][j-arr[i-1]];
-            else
-                dp[1-r][j] = dp[r][j];   
+        for(int j=1;j<=sum; j++){
+            if(arr[i-1] <= j){
+                dp[i%2][j] = dp[(i-1)%2][j] + dp[(i-1)%2][j-arr[i-1]];
+            }else{
+                dp[i%2][j] = dp[(i-1)%2][j];
+            }
         }
-        r = 1-r;
     }
 
-    return dp[r][sum];
+    return dp[n%2][sum];
 }
 
 
@@ -109,9 +105,9 @@ int main(){
     int sum;
     cin >> sum;
 
-    cout << subsetSum_2D(arr, n, sum) << endl; 
-    // cout << subsetSum_1D_2_rows(arr, n, sum) << endl; 
-    // cout << subsetSum_1D(arr, n, sum) << endl; 
+    // cout << subsetSum_2D(arr, n, sum) << endl; 
+    cout << subsetSum_1D_2_rows(arr, n, sum) << endl; 
+    cout << subsetSum_1D(arr, n, sum) << endl; 
 
 
     return 0;

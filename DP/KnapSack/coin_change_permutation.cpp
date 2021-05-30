@@ -1,8 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
-
 int coinChage_Permutation(int coins[], int n, int sum){
 
     int dp[sum+1];
@@ -26,7 +24,8 @@ int main(){
     int val[] = {1,2,3,4,5,6};
 
     int n = sizeof(val)/sizeof(val[0]);
-    cout << coinChage_Permutation(val, n, 3) << endl; 
+    cout << coinChage_Permutation(val, n, 10) << endl; 
+    
 
     return 0;
 }
