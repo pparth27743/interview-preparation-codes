@@ -8,7 +8,7 @@ long long hashing(string s){
     long long hash_val = 0;
     long long p_pow = 1;
     for(char ch : s){
-        hash_val += ((ch - 'a' + 1) * p_pow) % m;
+        hash_val = ( hash_val + (ch - 'a' + 1) * p_pow) % m;
         p_pow = (p_pow * p) % m;
     }
 
@@ -17,6 +17,6 @@ long long hashing(string s){
 
 int main(){
 
-    cout << hashing("parth") << endl;
+    cout << hashing("pfsadfasrth") << endl;
 
 }

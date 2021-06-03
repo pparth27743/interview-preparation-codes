@@ -56,15 +56,15 @@ vector<int> prefix_function(string s) {
 
 
 
-// KMP algo ( return all the indcies of the original string where pattern start to mathc.)
+// KMP algo ( return all the indcies of the original string where pattern start to match.)
 vector<int> KMP(string text, string pattern){
 
     vector<int> lps = computeLPS(pattern);
     vector<int> ans;
 
     int j = 0;
+    
     for(int i=0; i<text.size(); i++){
-
         if(text[i] == pattern[j]){
             j++;
         }
@@ -91,8 +91,8 @@ vector<int> KMP(string text, string pattern){
 
 int main(){
 
-    string text = "b";
-    string pattern = "b";
+    string text = "abcabcsdfsfabcabcdfsdabcabc";
+    string pattern = "abcabc";
 
     
     vector<int> ans = KMP(text, pattern);
@@ -103,7 +103,7 @@ int main(){
      
 
     // vector<int> ans = computeLPS(text);
-    // vector<int> ans1 = prefix_function(s);
+    // vector<int> ans1 = prefix_function(text);
     
     // for(int i : ans)
     //     cout << i << " ";
@@ -115,7 +115,7 @@ int main(){
 
     // bool flag = true;
 
-    // for(int i=0; i<s.size(); i++){
+    // for(int i=0; i<text.size(); i++){
     //     if(ans[i] != ans1[i]){
     //         flag = false;
     //         break;
