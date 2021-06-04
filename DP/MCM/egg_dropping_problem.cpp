@@ -2,32 +2,21 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-
+// O(e * f^2)
 int solve(int e, int f, vector<vector<int> > &dp){
     
-    if(f == 0 || f == 1)
-        return f;
-    if (e == 1)
+    if(f <= 1 || e == 1)
         return f;
         
     if(dp[e][f] != -1)
         return dp[e][f];
         
-    int ans = INT_MAX, temp;
+    int ans = INT_MAX, temp, s1,s2;
         
     for(int k=1; k<=f; k++){
         
-        int s1,s2;
-        
-        if(dp[e-1][k-1] != -1)
-            s1 = dp[e-1][k-1];
-        else
-            s1 = dp[e-1][k-1] = solve(e-1, k-1, dp);
-            
-        if(dp[e][f-k] != -1)
-            s2 = dp[e][f-k];
-        else
-            s2 = dp[e][f-k] = solve(e, f-k, dp);
+        s1 = solve(e-1, k-1, dp);
+        s2 = solve(e, f-k, dp);
         
         temp = 1 + max(s1, s2);
         ans = min(ans, temp);
@@ -37,6 +26,36 @@ int solve(int e, int f, vector<vector<int> > &dp){
 }
 
 
+// O(e * f log f)
+int solve(int e, int f, vector<vector<int> > &dp){
+
+    if(e == 1 || f <= 1)
+        return f;
+        
+    if(dp[e][f] != -1)
+        return dp[e][f];
+        
+    int ans = INT_MAX;
+    
+    int low = 1, high = f, mid;
+    
+    while(low <= high){
+        
+        mid = low + (high - low)/2;
+        
+        int t1 = 1 + solve(e-1, mid-1, dp);
+        int t2 = 1 + solve(e, f-mid, dp);
+    
+        if(t1 < t2)
+            low = mid+1;
+        else
+            high = mid-1;
+        
+        ans = min(ans, max(t1, t2));
+    }
+    
+    return dp[e][f] = ans;
+}
 
 
 int main(){

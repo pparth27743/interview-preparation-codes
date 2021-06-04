@@ -2,6 +2,8 @@
 using namespace std;
 
 
+// source: https://cp-algorithms.com/string/string-hashing.html
+
 int count_unique_substrings
 
 (string s){
@@ -25,12 +27,19 @@ int count_unique_substrings
     
     int cnt = 0;
 
+    // To reduce collision probability use,
+    // set<pair<long long, long long>>
+
     for(int l=1; l<=n; l++){
         set<long long> hs;
         for(int i=0; i<=n-l; i++){
             long long hcurr;
             hcurr = (prefix_hash[i+l] + m - prefix_hash[i]) % m;
-            hcurr = (hcurr * p_pow[n-1-i]) % m;
+            
+            //  p_pow[n-1-i] is not modulo multiplicative inverse.  
+            // we get all the hashes multiplied by the same power of p. (take example 'abab' and see how it works)  
+            hcurr = (hcurr * p_pow[n-1-i]) % m;                
+            
             hs.insert(hcurr);
         }
         cnt += hs.size();
@@ -44,7 +53,6 @@ int count_unique_substrings
 int main(){
 
     vector<int> ans;
-
    
     cout << count_unique_substrings("abc") << endl;
 
