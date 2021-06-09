@@ -69,7 +69,7 @@ int solve(string s, int i, int j, vector<vector<long> > &dp, vector<vector<int> 
 int main()
 {
 
-    string s = "parth";
+    string s = "parth patel";
     int n = s.size();
 
     vector<vector<long> > dp(n+1, vector<long> (n+1, -1));
