@@ -3,7 +3,7 @@ using namespace std;
 
 long numMaxHeap(long A, vector<long> &dp, vector<vector<long> > &nck){
     
-    if(A <= 1)
+    if(A <= 1)  
         return 1;
         
     if(dp[A] != -1)
@@ -15,14 +15,14 @@ long numMaxHeap(long A, vector<long> &dp, vector<vector<long> > &nck){
     long nodeH = pow(2, h); // 2^h
     long last = A - (pow(2, h) - 1); // A - (2^h -1)
     
-    long L;
+    long L, R;
     
     if(last >= nodeH/2)
         L = pow(2, h) - 1;
     else
         L = (pow(2, h-1) - 1) + last;
     
-    long R = A-1-L;
+    R = A-1-L;
 
     long leftans = numMaxHeap(L,dp, nck ) % m;
     long rightans = numMaxHeap(R, dp, nck) % m;
@@ -37,8 +37,8 @@ long numMaxHeap(long A, vector<long> &dp, vector<vector<long> > &nck){
 
 int main() {
     
-    long A;
-    cin >> A;
+    long A = 10;
+    
 
     long m = 1e9+7;
 
@@ -57,5 +57,8 @@ int main() {
     
     cout <<  numMaxHeap(A, dp, nck) << '\n'; 
     
+    
+    
     return 0;
 }
+

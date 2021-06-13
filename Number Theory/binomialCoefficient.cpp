@@ -50,6 +50,24 @@ vector<vector<int> > Tabular_binomicalCoeff(long n){
 }
 
 
+vector<vector<int> > Pascal_Triangle(int n){
+
+    vector<vector<int> > nck(n+1, vector<int> (n+1, 0));
+
+    for(int i=0; i<=n; i++)
+        nck[i][0] = 1;
+
+    for(int i=1; i<=n; i++){
+        for(int j=1; j<=n; j++){
+            nck[i][j] = nck[i-1][j] + nck[i-1][j-1];
+        }
+    }
+    
+   return nck;
+}
+
+
+
 int main(){
 
     int n = 6;
