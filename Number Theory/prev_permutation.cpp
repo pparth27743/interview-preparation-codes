@@ -15,7 +15,7 @@ using namespace std;
         return;
     }
 
-    for(l=k+1; l<n; l++){
+    for(l=n-1; l>k; l--){
         if(nums[k] > nums[l])
             break;
     }
@@ -28,7 +28,7 @@ using namespace std;
 
 int main(){
 
-    int arr[] = {2,1,3,4};
+    int arr[] = {1,9,4,6,7};
     int n = sizeof(arr)/sizeof(arr[0]);
 
     vector<int> v(begin(arr), end(arr));

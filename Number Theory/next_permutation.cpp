@@ -40,7 +40,9 @@ Reverse the sub-array nums[k + 1:].
 
 int main(){
 
-    int arr[] = {1,4,3,2};
+    // int arr[] = {1,9,4,6,7};
+    int arr[] = {1, 7, 9, 6, 4};
+    
     int n = sizeof(arr)/sizeof(arr[0]);
 
     vector<int> v(begin(arr), end(arr));

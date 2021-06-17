@@ -1,18 +1,12 @@
 /*
+Given string in e.g. 'a1B2' return following. 
 
-Given Input 'ABCD' return all of the follwing.
-
-'A B C D' 
-'A B CD' 
-'A BC D' 
-'A BCD' 
-'AB C D' 
-'AB CD' 
-'ABC D' 
-'ABCD' 
+'a1b2' 
+'a1B2' 
+'A1b2' 
+'A1B2' 
 
 */
-
 
 
 #include <bits/stdc++.h>
@@ -26,29 +20,28 @@ void solve(string s, int i, string &tmp){
         return;
     }
 
-    if(i == 0){
-        tmp.push_back(s[i]);
+    if(isalpha(s[i])){
+        // with smaller case
+        tmp.push_back(tolower(s[i]));
+        solve(s, i+1, tmp);
+        tmp.pop_back();
+
+        //with uppercase
+        tmp.push_back(toupper(s[i]));
         solve(s, i+1, tmp);
         tmp.pop_back();
     }
     else{
-        // with space 
-        tmp.push_back(' ');
-        tmp.push_back(s[i]);
-        solve(s, i+1, tmp);
-        tmp.pop_back();
-        tmp.pop_back();
-
-        // without space
         tmp.push_back(s[i]);
         solve(s, i+1, tmp);
         tmp.pop_back();
     }
+
 }
 
 int main() {
 
-    string s = "ABCD";
+    string s = "a1B2";
 
     string tmp = "";
     solve(s, 0, tmp);
