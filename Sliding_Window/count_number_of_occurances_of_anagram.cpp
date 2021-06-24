@@ -44,7 +44,7 @@ int solve(string txt, string pat){
 
 int main() {
 
-    string txt = "forxxorfxdofr", pat = "for";
+    string txt = "forxforforxorfxdofr", pat = "for";
 
     cout << solve(txt, pat) << endl;
 
