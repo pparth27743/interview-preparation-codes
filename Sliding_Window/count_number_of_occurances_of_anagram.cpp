@@ -8,7 +8,6 @@ int solve(string txt, string pat){
     unordered_map<char, int> mp;
 
     for(char ch : pat)                          mp[ch]++;
-    for(auto i=mp.begin(); i!=mp.end(); i++)    i->second++;
 
     int n=txt.size(), k=pat.size();
     int i=0, j=0;
@@ -18,7 +17,7 @@ int solve(string txt, string pat){
     while(j<n){
         if(mp.find(txt[j]) != mp.end()){
             mp[txt[j]]--;
-            if(mp[txt[j]] == 1)
+            if(mp[txt[j]] == 0)
                 count--;
         }
 
@@ -31,7 +30,7 @@ int solve(string txt, string pat){
             
             if(mp.find(txt[i]) != mp.end()){
                 mp[txt[i]]++;
-                if(mp[txt[i]] == 2)
+                if(mp[txt[i]] == 1)
                     count++;
             }
 
