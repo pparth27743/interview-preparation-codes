@@ -7,12 +7,11 @@ using namespace std;
 void dfs(int u, vector<bool> &visted, vector<int> &ans, vector<vector<pii> > &adjList){
 
     visted[u] = true;
+    ans.push_back(u);
 
     for(auto edge  : adjList[u]){
         int v = edge.first;
         if(!visted[v]){
-            visted[v] = true;
-            ans.push_back(v);
             dfs(v, visted, ans, adjList);
         }
     }
@@ -22,26 +21,30 @@ void dfs(int u, vector<bool> &visted, vector<int> &ans, vector<vector<pii> > &ad
 void bfs(vector<vector<pii> > &adjList){
 
     vector<int> ans;
-
     int n = adjList.size();
 
     vector<bool> visited(n,false);
+    vector<int> d(n), p(n);
     queue<int> q;
 
     int s = 0;
     visited[s] = true;
+    p[s] = -1;
+    d[s] = 0;
     q.push(s);
 
+
     while(!q.empty()){
-        int u = q.front();
-        q.pop();
+        int u = q.front();  q.pop();
+        ans.push_back(u);
         
         for(auto edge :  adjList[u]){
             int v = edge.first;
             if(!visited[v]){
                 visited[v] = true;
                 q.push(v);
-                ans.push_back(v);
+                d[v] = d[u] + 1;
+                p[v] = u;
             }
         }
     }
@@ -55,12 +58,7 @@ void bfs(vector<vector<pii> > &adjList){
 
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt","r",stdin);
-        freopen("output.txt","w",stdout);
-    #endif
+  
 
     vector<vector<pii> > adjList(9);
 
@@ -99,11 +97,11 @@ int main(){
     vector<int> ans;
     vector<bool> visited(n, false);
 
-    // dfs(0, visited, ans, adjList);
+    dfs(0, visited, ans, adjList);
 
-    // for(int i : ans)
-    //     cout << i << " ";
-    // cout << "\n";
+    for(int i : ans)
+        cout << i << " ";
+    cout << "\n";
     
 
     return 0;

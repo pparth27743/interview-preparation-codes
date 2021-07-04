@@ -28,7 +28,7 @@ using namespace std;
 
 int main(){
 
-    int arr[] = {1,9,4,6,7};
+    int arr[] = {7, 6, 1, 1, 1};
     int n = sizeof(arr)/sizeof(arr[0]);
 
     vector<int> v(begin(arr), end(arr));
