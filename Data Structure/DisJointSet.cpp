@@ -32,39 +32,31 @@ class DisJointSet {
     }
 
     // Uinon by Rank
-    void union_set(int a, int b){
+    void union_set(int u, int v){
 
-        a = find_set(a);
-        b = find_set(b);
+        u = find_set(u);
+        v = find_set(v);
 
-        if(a != b){
-            if(rank[a] < rank[b])
-                parent[a] = b;
-            else if(rank[b] < rank[a])
-                parent[b] = a;
-            else{
-                parent[b] = a;
-                rank[a]++;
+        if(u != v){
+            if(rank[u] < rank[v])
+                parent[u] = v;
+            else if(rank[v] < rank[u])
+                parent[v] = u;
+            else
+            {
+                parent[v] = u;
+                rank[u]++;
             }
         }
-
     }
 };
 
 
 
 int main(){
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    #ifndef ONLINE_JUDGE
-        freopen("input.txt","r",stdin);
-        freopen("output.txt","w",stdout);
-    #endif
 
     int n = 5;
-
     DisJointSet dsu(n);
-
     dsu.union_set(0,1);
     dsu.union_set(2,3);
     dsu.union_set(4,1);
@@ -75,13 +67,4 @@ int main(){
 
 
     cout << endl;
-
-
-
-
-
-
-
-               
-
 }
