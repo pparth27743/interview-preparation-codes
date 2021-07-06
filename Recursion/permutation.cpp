@@ -44,7 +44,7 @@ void solve_2(int index, vector<int> &nums){
     
     for(int i=index; i<nums.size(); i++){
         swap(nums[i], nums[index]);
-        solve_2(index+1, nums);
+        solve_2(index+1, nums);                 // see here I did index+1
         swap(nums[i], nums[index]);
     }
 }
