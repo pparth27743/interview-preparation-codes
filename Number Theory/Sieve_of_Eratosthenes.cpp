@@ -13,6 +13,10 @@ vector<int> sieve1(int num){
     for(int i=0; i<N; i++)
         isPrime[i] = true;
     
+    // Special cases
+    isPrime[0] = false;
+    isPrime[1] = false;
+    isPrime[2] = true;
     
     // Original Sieve
     for(int i=2; i*i<N; i++){
@@ -21,12 +25,6 @@ vector<int> sieve1(int num){
                 isPrime[j] = false;
         }
     }
-    
-    // Special cases
-    isPrime[0] = false;
-    isPrime[1] = false;
-    isPrime[2] = true;
-
     
     // make array of prime numbers
     for(int i=0; i<N; i++)
