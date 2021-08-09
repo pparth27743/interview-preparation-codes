@@ -34,7 +34,6 @@ int solve(string s) {
 int main() {
 
     string s = "aabacbebebe";
-    int k = 3;
 
     cout << solve(s) << endl;
 
