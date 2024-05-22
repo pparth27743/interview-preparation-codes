@@ -80,6 +80,7 @@ vector<int> KMP(string text, string pattern){
 
         if(j == pattern.size()){
             ans.push_back(i-(j-1));
+            i = i-j+1;
             j = 0;
         }
     }
@@ -91,8 +92,8 @@ vector<int> KMP(string text, string pattern){
 
 int main(){
 
-    string text = "abcabcsdfsfabcabcdfsdabcabc";
-    string pattern = "abcabc";
+    string text = "aaaa";
+    string pattern = "aa";
 
     
     vector<int> ans = KMP(text, pattern);
