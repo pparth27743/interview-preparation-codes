@@ -1,3 +1,5 @@
+//// Problem Statement: https://www.geeksforgeeks.org/count-of-subsets-with-given-difference/
+
 #include <bits/stdc++.h>
 using namespace std;
 
